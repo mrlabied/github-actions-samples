@@ -1,0 +1,16 @@
+name: External Workflow Usage
+# Déclencheur spécial workflow_call
+on:
+  push:
+
+jobs:
+  # Appels du workflow réutilisable
+  call-workflow:
+    # Chemin vers le fichier réutilisable dans le dépôt (ou dans un dépôt externe)
+    uses: ./.github/workflows/reusable-workflow-example.yml
+    # Transmission des variables déclarées dans inputs
+    with:
+      app-version: '2.1.0'
+    # Transmission des secrets déclarés dans secrets
+    secrets:
+      API_TOKEN: ${{ secrets.MY_GLOBAL_TOKEN }}

@@ -1,0 +1,34 @@
+name: CI - DEMO Environement varibles 
+on:
+  push:
+    branches: [main]
+env:
+  WORKFLOW_ENV_VAR: MY_WF_VALUE
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      JOB_ENV_VAR: MY_JB_VALUE
+    steps:
+      - name: Job-1-Step-1
+        env:
+          STEP_ENV_VAR: MY_STP_VALUE
+        run: |
+          echo "WORKFLOW_ENV_VAR: $WORKFLOW_ENV_VAR"  #available
+          echo "JOB_ENV_VAR: $JOB_ENV_VAR"       #available
+          echo "STEP_ENV_VAR: $STEP_ENV_VAR"     #available
+      - name: Job-1-Step-2
+        run:  |   
+          echo "WORKFLOW_ENV_VAR: $WORKFLOW_ENV_VAR"  #available
+          echo "JOB_ENV_VAR: $JOB_ENV_VAR"       #available
+          echo "STEP_ENV_VAR: $STEP_ENV_VAR"     # not available 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Job-2-Step-1
+          run: |
+            echo "WORKFLOW_ENV_VAR: $WORKFLOW_ENV_VAR"  #available
+            echo "JOB_ENV_VAR: $JOB_ENV_VAR"       # not available 
+            echo "STEP_ENV_VAR: $STEP_ENV_VAR"     # not available 
+        
+    

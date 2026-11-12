@@ -1,0 +1,14 @@
+name: Test
+on: [push]
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4          # nécessaire pour une action locale
+      - id: hello
+        uses: ./.github/actions/action-composite-demo                          # action à la racine du dépôt
+        with:
+          who-to-greet: 'Alice'
+      - run: echo "${{ steps.hello.outputs.greeting }}"
+

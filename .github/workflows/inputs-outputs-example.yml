@@ -1,0 +1,36 @@
+name: CI - DEMO Environement varibles 
+on:
+  push:
+    branches: [main]
+
+jobs:
+  # passing variables intra-job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Créer un output
+      id: step1 # ID obligatoire pour référencer l'étape
+      run: |
+        echo "my_output=succes" >> $GITHUB_OUTPUT
+
+    - name: Utiliser l'output dans une autre étape
+      run: |
+        echo "Le résultat précédent est : ${{ steps.step1.outputs.my_output }}"
+          
+  # passing variables inter-job
+  job_producteur:
+    runs-on: ubuntu-latest
+    outputs:
+      mon_resultat: ${{ steps.step_gen.outputs.version }}
+    steps:
+      - name: Générer la donnée
+        id: step_gen
+        run: echo "version=1.2.3" >> $GITHUB_OUTPUT
+
+  job_consommateur:
+    runs-on: ubuntu-latest
+    needs: [job_producteur] # Indique que ce job dépend du premier
+    steps:
+      - name: Récupérer la donnée du job précédent
+        run: |
+          echo "La version reçue est : ${{ needs.job_producteur.outputs.mon_resultat }}"
