@@ -11,6 +11,3 @@ jobs:
     # Transmission des variables déclarées dans inputs
     with:
       app-version: '2.1.0'
-    # Transmission des secrets déclarés dans secrets
-    secrets:
-      API_TOKEN: ${{ secrets.MY_GLOBAL_TOKEN }}
