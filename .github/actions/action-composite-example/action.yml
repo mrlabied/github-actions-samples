@@ -1,0 +1,30 @@
+name: 'Hello Action'
+description: 'Affiche un message de salutation'
+author: 'votre-org'
+
+branding:
+  icon: 'message-circle'
+  color: 'blue'
+
+inputs:
+  who-to-greet:
+    description: 'Nom de la personne à saluer'
+    required: true
+    default: 'World'
+
+outputs:
+  greeting:
+    description: 'Le message généré'
+    value: ${{ steps.greet.outputs.greeting }}
+
+runs:
+  using: 'composite'
+  steps:
+    - id: greet
+      shell: bash
+      env:
+        WHO: ${{ inputs.who-to-greet }}
+      run: |
+        MSG="Hello, $WHO!"
+        echo "$MSG"
+        echo "greeting=$MSG" >> "$GITHUB_OUTPUT"
