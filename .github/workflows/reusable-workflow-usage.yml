@@ -7,7 +7,7 @@ jobs:
   # Appels du workflow réutilisable
   call-workflow:
     # Chemin vers le fichier réutilisable dans le dépôt (ou dans un dépôt externe)
-    uses: ./.github/workflows/reusable-workflow-example.yml
+    uses: mrlabied/github-actions-samples/.github/workflows/reusable-workflow-example.yml@main
     # Transmission des variables déclarées dans inputs
     with:
       python-version: '2.1.0'
