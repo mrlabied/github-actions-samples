@@ -10,4 +10,4 @@ jobs:
     uses: ./.github/workflows/reusable-workflow-example.yml
     # Transmission des variables déclarées dans inputs
     with:
-      app-version: '2.1.0'
+      python-version: '2.1.0'
