@@ -10,7 +10,7 @@ jobs:
   # Appels du workflow réutilisable
   call-tests:
     # Chemin vers le fichier réutilisable dans le dépôt (ou dans un dépôt externe)
-    uses: ./.github/workflows/reusable-python-test.yml
+    uses: ./.github/workflows/reusable-workflow-example.yml
     # Transmission des variables déclarées dans inputs
     with:
       python-version: '3.11'
