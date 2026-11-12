@@ -1,0 +1,33 @@
+name: Workflow Réutilisable - Tests Python
+
+# Déclencheur spécial workflow_call
+on:
+  workflow_call:
+    # 1. Paramètres d'entrée transmis par le workflow appelant (Optionnel)
+    inputs:
+      python-version:
+        description: 'Version de Python à utiliser'
+        required: false
+        type: string
+        default: '3.10'
+    # 2. Secrets à transmettre (ex: clés API, tokens) (Optionnel)
+    secrets:
+      API_TOKEN:
+        required: false
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Configuration de Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python-version }}
+
+      - name: Lancement des tests
+        run: |
+          echo "Exécution des tests sous Python ${{ inputs.python-version }}"
+          python -m unittest discover

@@ -1,4 +1,4 @@
-name: CI - DEMO Environement varibles 
+name: CI - DEMO Inpouts/Outputs variables 
 on:
   push:
     branches: [main]
