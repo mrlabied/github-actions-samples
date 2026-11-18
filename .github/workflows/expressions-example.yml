@@ -1,6 +1,5 @@
 name: expressions-demo
 on:
-  push:
   workflow_dispatch:
     inputs:
       debug:
