@@ -7,7 +7,7 @@ on:
         type: boolean
         default: false
 
-run-name: "07-Expressions-debug-${{ inputs.debug && 'on' || 'off' }}"
+run-name: "Expressions-debug-${{ inputs.debug && 'on' || 'off' }}"
 
 jobs:
   echo:
