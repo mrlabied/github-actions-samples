@@ -1,4 +1,4 @@
-name: 07-expressions
+name: expressions-demo
 on:
   push:
   workflow_dispatch:
@@ -27,4 +27,3 @@ jobs:
           echo "I was triggered from main"
           echo "Hello world"
 
-          
