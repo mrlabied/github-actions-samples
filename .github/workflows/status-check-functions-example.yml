@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Step that might fail
         id: test
-        run: exit 1
+        run: exit 0
       
       - name: Only on success
         if: success()
