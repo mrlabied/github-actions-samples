@@ -1,0 +1,21 @@
+name: pr-functions
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  process-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print PR title
+        run: echo "PR Title -  ${{ github.event.pull_request.title }}"
+      
+      - name: Print PR labels
+        run: |
+          cat <<EOF
+          ${{ toJson(github.event.pull_request.labels) }}
+          EOF
+      
+      - name: Bug fix step
+        if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix') }}
+        run: echo "I am a bug fix"
