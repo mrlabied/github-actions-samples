@@ -18,4 +18,4 @@ jobs:
       
       - name: Bug fix step
         if: ${{ !cancelled() && contains(github.event.pull_request.title, 'fix') }}
-        run: echo "I am a bug fix"
+        run: echo "I am a bug fix step"
