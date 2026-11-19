@@ -1,4 +1,4 @@
-name: pr-functions
+name: general-functions-demo
 on:
   pull_request:
     types: [opened]
