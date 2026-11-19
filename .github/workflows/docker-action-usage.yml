@@ -1,0 +1,25 @@
+name: Docker-Action-Usage-Demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: "Name to greet"
+        required: true
+        default: "all"
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code source
+        uses: actions/checkout@v4
+
+      - name: execute docker action
+        id: greet
+        uses: ./.github/actions/action-docker
+        with:
+          who-to-greet: ${{ inputs.name || github.actor }}
+
+      - name: Afficher la sortie 'time' générée par entrypoint.sh
+        run: echo "Heure d'exécution retournée - ${{ steps.greet.outputs.time }}"

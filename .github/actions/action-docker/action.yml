@@ -1,0 +1,18 @@
+name: 'Docker Action'
+description: 'Docker action example'
+
+branding:
+  icon: 'message-circle'
+  color: 'green'
+
+inputs:
+  who-to-greet:
+    description: 'Nom de la personne à saluer'
+    required: true
+    default: 'World'
+
+runs:
+  using: 'docker'
+  image: Dockerfile
+  args:
+    - ${{inputs.who-to-greet}}
